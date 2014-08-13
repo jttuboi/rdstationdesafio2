@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+
+#menu {
+	background-color: #aaa;
+	border-bottom: solid black 1px;
+	height: 30px;
+	padding-bottom: 8px;
+	width: 100%;
+}
+
+#menu_salesforce {
+	color: black;
+	float: right;
+	margin: 10px;
+}

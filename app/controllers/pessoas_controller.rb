@@ -1,13 +1,28 @@
 class PessoasController < ApplicationController
-  before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
+  before_action :set_pessoa, only: [:show, :edit, :update, :destroy, :integrate_salesforce]
 
   # GET /pessoas
   # GET /pessoas.json
   def index
-    @names = client.query("select name from Account")
-    @names.each do |item|
-      puts item.Name
+    if current_user
+      @lead = client.query("select Id, FirstName, LastName, Email, Company, Title, Phone, Website from Lead")
+      
+      pessoas_aux = Pessoa.all
+      
+      @lead.each do |item|
+        # verifica se já existe no sistema rdstationdesafio2
+        exist = false
+        pessoas_aux.each do |pessoa|
+          exist = exist || (item.Id == pessoa.salesforce_id)
+        end
+        
+        # se nao existe adiciona ele
+        if !exist
+          Pessoa.new_from_lead(item)
+        end
+      end
     end
+    
     @pessoas = Pessoa.all
   end
 
@@ -32,6 +47,14 @@ class PessoasController < ApplicationController
 
     respond_to do |format|
       if @pessoa.save
+        
+        if current_user
+          if @pessoa.integrate
+            puts "saveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+            client.create('Lead', FirstName: @pessoa.name, LastName: @pessoa.last_name, Email: @pessoa.email, Company: @pessoa.company, Title: @pessoa.job_title, Phone: @pessoa.phone, Website: @pessoa.website)
+          end
+        end
+        
         format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }
         format.json { render action: 'show', status: :created, location: @pessoa }
       else
@@ -64,7 +87,29 @@ class PessoasController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def integrate_salesforce
+    @pessoa.integrate = !@pessoa.integrate
+    @pessoa.save
+    
+    redirect_to action: 'index'
+  end
+  
+  def syncronize_salesforce
+    # @pessoas = Pessoa.all
+#     
+    # @pessoas.each do |pessoa|
+      # if pessoa.integrate
+        # puts pessoa.name
+            # # if current_user && @pessoa.integrate
+          # # client.create('Lead', FirstName: @pessoa.name, LastName: @pessoa.last_name, Email: @pessoa.email, Company: @pessoa.company, Title: @pessoa.job_title, Phone: @pessoa.phone, Website: @pessoa.website)
+        # # end
+      # end
+    # end
+    
+    redirect_to action: 'index'
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pessoa
@@ -73,6 +118,6 @@ class PessoasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pessoa_params
-      params.require(:pessoa).permit(:name, :last_name, :email, :company, :job_title, :phone, :website)
+      params.require(:pessoa).permit(:name, :last_name, :email, :company, :job_title, :phone, :website, :integrate)
     end
 end

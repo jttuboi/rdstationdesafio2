@@ -1,13 +1,15 @@
 Quickrep::Application.routes.draw do
 
-
-  resources :pessoas
+  root 'home#landing'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  root 'home#landing'
+  resources :pessoas do
+    get 'integrate_salesforce', on: :member
+  end
+  post 'pessoas/syncronize_salesforce'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
