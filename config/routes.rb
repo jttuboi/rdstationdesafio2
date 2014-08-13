@@ -1,12 +1,14 @@
 Quickrep::Application.routes.draw do
 
 
+  resources :pessoas
+
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   root 'home#landing'
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

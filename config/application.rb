@@ -2,8 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-SALESFORCE_APP_ID = ''
-SALESFORCE_APP_SECRET = ''
+SALESFORCE_APP_ID = '3MVG9xOCXq4ID1uHwpuz_gk1vLP4qIlqZUzuspFZ14ufqz0481ZVt5ZTPEgaoW439Cqd8yQD1kTXJRLaaoQ3s'
+SALESFORCE_APP_SECRET = '5775174370761877174'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
