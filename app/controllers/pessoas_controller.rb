@@ -5,9 +5,8 @@ class PessoasController < ApplicationController
   # GET /pessoas.json
   def index
     if current_user
-      @lead = client.query("select Id, FirstName, LastName, Email, Company, Title, Phone, Website from Lead")
-      
-      pessoas_aux = Pessoa.all
+      @lead = client.select_pessoas
+      pessoas_aux = Pessoa.where("user_id = #{current_user.id}")
       
       @lead.each do |item|
         # verifica se já existe no sistema rdstationdesafio2
@@ -18,12 +17,12 @@ class PessoasController < ApplicationController
         
         # se nao existe adiciona ele
         if !exist
-          Pessoa.new_from_lead(item)
+          Pessoa.new_from_lead(item, current_user)
         end
       end
+      
+      @pessoas = Pessoa.where("user_id = #{current_user.id}")
     end
-    
-    @pessoas = Pessoa.all
   end
 
   # GET /pessoas/1
@@ -34,6 +33,9 @@ class PessoasController < ApplicationController
   # GET /pessoas/new
   def new
     @pessoa = Pessoa.new
+    if params[:user]
+      @pessoa.user = User.find(current_user)
+    end
   end
 
   # GET /pessoas/1/edit
@@ -48,11 +50,16 @@ class PessoasController < ApplicationController
     respond_to do |format|
       if @pessoa.save
         
-        if current_user
-          if @pessoa.integrate
-            puts "saveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
-            client.create('Lead', FirstName: @pessoa.name, LastName: @pessoa.last_name, Email: @pessoa.email, Company: @pessoa.company, Title: @pessoa.job_title, Phone: @pessoa.phone, Website: @pessoa.website)
-          end
+        if current_user && @pessoa.integrate
+          id = client.add_pessoa({
+                   first_name: @pessoa.name,
+                   last_name: @pessoa.last_name,
+                   email: @pessoa.email,
+                   company: @pessoa.company,
+                   title: @pessoa.job_title,
+                   phone: @pessoa.phone,
+                   website: @pessoa.website
+          })
         end
         
         format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }

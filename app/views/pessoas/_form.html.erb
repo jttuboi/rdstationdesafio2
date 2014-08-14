@@ -1,3 +1,5 @@
+
+
 <%= form_for(@pessoa) do |f| %>
   <% if @pessoa.errors.any? %>
     <div id="error_explanation">
@@ -9,6 +11,13 @@
       <% end %>
       </ul>
     </div>
+  <% end %>
+  
+  <% if @pessoa.user %>
+	<%= f.hidden_field 'user_id' %>
+  <% else %>
+    <p><%= f.label :user_id %><br />
+    <%= f.collection_select(:user_id, @users, :id, :name, :prompt => true) %></p>
   <% end %>
 
   <div class="field">

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 #gem 'slim-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -36,6 +36,8 @@ end
 gem 'pry'
 gem 'restforce'
 gem 'omniauth-salesforce'
+
+gem 'salesforce_desafio', "~> 0.0.1"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

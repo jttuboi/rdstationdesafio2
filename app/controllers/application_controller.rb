@@ -11,11 +11,16 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
   
     def client
-      @client ||= Restforce.new :oauth_token => current_user.oauth_token,
-        :refresh_token => current_user.refresh_token,
-        :instance_url  => current_user.instance_url,
-        :client_id     => SALESFORCE_APP_ID,
-        :client_secret => SALESFORCE_APP_SECRET
+        @client ||= SalesforceDesafio::Client.new(
+                        current_user.provider,
+                        current_user.uid,
+                        current_user.name,
+                        current_user.oauth_token,
+                        current_user.refresh_token,
+                        current_user.instance_url,
+                        SALESFORCE_APP_ID,
+                        SALESFORCE_APP_SECRET
+        )
     end
     helper_method :client
   

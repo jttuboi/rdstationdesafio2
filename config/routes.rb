@@ -8,6 +8,7 @@ Quickrep::Application.routes.draw do
 
   resources :pessoas do
     get 'integrate_salesforce', on: :member
+    resources :users
   end
   post 'pessoas/syncronize_salesforce'
   
