@@ -1,19 +1,101 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  last_name: MyString
-  email: MyString
-  company: MyString
-  job_title: MyString
-  phone: MyString
-  website: MyString
+  name: Jairo
+  last_name: Tuboi
+  email: jttuboi@gmail.com
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
 
-two:
-  name: MyString
-  last_name: MyString
-  email: MyString
-  company: MyString
-  job_title: MyString
-  phone: MyString
-  website: MyString
+name_maior_40:
+  name: JairoJairoJairoJairoJairoJairoJairoJairo1
+  last_name: Tuboi
+  email: jttuboi@gmail.com
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
+  
+last_name_maior_80:
+  name: Jairo
+  last_name: TuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboiTuboi1
+  email: jttuboi@gmail.com
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
+  
+completo:
+  name: Jairo
+  last_name: Tuboi
+  email: jttuboi@gmail.com
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
+  
+nao_obrigatorios:
+  name: 
+  last_name: Tuboi
+  email: 
+  company: tuboi
+  job_title: 
+  phone: 
+  website: 
+  user_id: 1
+
+user_id_vazio:
+  name: Jairo
+  last_name: Tuboi
+  email: jttuboi@gmail.com
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 
+  
+company_vazio:
+  name: Jairo
+  last_name: Tuboi
+  email: jttuboi@gmail.com
+  company: 
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
+
+last_name_vazio:
+  name: Jairo
+  last_name:
+  email: jttuboi@gmail.com
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
+  
+email_errado:
+  name: Jairo
+  last_name: Tuboi
+  email: asd
+  company: tuboi
+  job_title: chefe
+  phone: 123123123
+  website: www.www.www
+  user_id: 1
+  
+vazio:
+  name: 
+  last_name: 
+  email: 
+  company: 
+  job_title: 
+  phone: 
+  website: 
+  user_id: 

@@ -24,7 +24,7 @@ class Pessoa < ActiveRecord::Base
   end
  
   def eh_email
-    if email != nil # email pode ser vazio
+    if email != nil && !email.empty? # email pode ser vazio
       errors.add(:email, " is not an valid email") unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     end
   end
