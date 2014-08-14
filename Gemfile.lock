@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jttuboi/salesforce_desafio.git
-  revision: 484061f56eba93ab802f8a620a3cef7633345556
+  revision: c92f7033824f6133ac9be7520afb3be67d11230d
   specs:
     salesforce_desafio (0.0.1)
 
