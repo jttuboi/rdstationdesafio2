@@ -38,7 +38,7 @@ gem 'pry'
 gem 'restforce'
 gem 'omniauth-salesforce'
 
-gem 'salesforce_desafio', :git => 'git://github.com/jttuboi/salesforce_desafio.git'
+gem 'salesforce_desafio', '0.0.1', :git => 'git://github.com/jttuboi/salesforce_desafio.git'
 
 gem 'rails_12factor', group: :production
 

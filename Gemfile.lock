@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jttuboi/salesforce_desafio.git
+  revision: 484061f56eba93ab802f8a620a3cef7633345556
+  specs:
+    salesforce_desafio (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -117,11 +123,6 @@ GEM
       faraday_middleware (>= 0.8.8)
       hashie (>= 1.2.0, < 2.1)
       json (>= 1.7.5, < 1.9.0)
-    salesforce_desafio (0.0.1)
-      omniauth-salesforce (~> 1.0)
-      pry (~> 0.10)
-      rails (~> 4.1)
-      restforce (~> 1.4)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -168,7 +169,7 @@ DEPENDENCIES
   rails (= 4.1)
   rails_12factor
   restforce
-  salesforce_desafio (~> 0.0.1)
+  salesforce_desafio (= 0.0.1)!
   sass-rails (~> 4.0.2)
   sdoc
   turbolinks
