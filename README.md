@@ -10,11 +10,15 @@ The operators CRUD, only create *Pessoa* will be sincronyze with salesforce, in 
 
 It was forked this github [rails-salesforce-oauth-template] [bfagundez]
 
-Example Testing
+Example & Testing
 -------
 [Heroku] [heroku].
 
-Links Helper
+**OBS:** to test, you must use developer account of the developer.salesforce.com. When you signout of this site, you must disconnect developer salesforce site because the site only disconnect himself.
+
+To verify syncronism, enter with an account and create a Pessoa. This Pessoa will syncronize with salesforce site and add in Lead aba. With other account you will do same steps and you must analyze the Pessoa/Lead created.
+
+Links helper
 -------
 - https://developer.salesforce.com/page/Digging_Deeper_into_OAuth_2.0_on_Force.com
 - http://www.salesforce.com/us/developer/docs/api/Content/sforce_api_objects_lead.htm
