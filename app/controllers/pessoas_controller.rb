@@ -33,7 +33,6 @@ class PessoasController < ApplicationController
   # GET /pessoas/new
   def new
     @pessoa = Pessoa.new
-    @pessoa.user = current_user
   end
 
   # GET /pessoas/1/edit
@@ -44,11 +43,12 @@ class PessoasController < ApplicationController
   # POST /pessoas.json
   def create
     @pessoa = Pessoa.new(pessoa_params)
-    @pessoa.user = current_user # TODO: tirar e fazer receber por pessoa_params
-
+    @pessoa.user = current_user 
+    
     respond_to do |format|
-      if current_user
-        id = client.add_pessoa({
+      if @pessoa.save
+        if current_user
+          id = client.add_pessoa({
                  first_name: @pessoa.name,
                  last_name: @pessoa.last_name,
                  email: @pessoa.email,
@@ -56,18 +56,14 @@ class PessoasController < ApplicationController
                  title: @pessoa.job_title,
                  phone: @pessoa.phone,
                  website: @pessoa.website
-        })
-        
+          })
+          @pessoa.update(salesforce_id: id)
+        end
         format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }
         format.json { render action: 'show', status: :created, location: @pessoa }
       else
-        if @pessoa.save
-          format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @pessoa }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @pessoa.errors, status: :unprocessable_entity }
-        end
+        format.html { render action: 'new' }
+        format.json { render json: @pessoa.errors, status: :unprocessable_entity }
       end
     end
   end

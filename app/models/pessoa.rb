@@ -1,10 +1,8 @@
 class Pessoa < ActiveRecord::Base
   belongs_to :user
-  
-  
-  
-  validates :name, presence: true, length: { in: 1..80 }
-  validates :last_name, presence: true, length: { in: 1..80 }
+
+  validates :name, length: { maximum: 40 }
+  validates :last_name, presence: true, length: { maximum: 80 }
   validate :eh_email
   validates :company, presence: true
   
@@ -26,6 +24,8 @@ class Pessoa < ActiveRecord::Base
   end
  
   def eh_email
-    errors.add(:email, " is not an valid email") unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+    if email != nil # email pode ser vazio
+      errors.add(:email, " is not an valid email") unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+    end
   end
 end

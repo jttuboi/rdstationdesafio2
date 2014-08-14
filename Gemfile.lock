@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/jttuboi/salesforce_desafio.git
-  revision: c92f7033824f6133ac9be7520afb3be67d11230d
+  revision: 35e80fd3622d30ce7a0fd74cde552d779d3ac6f1
   specs:
-    salesforce_desafio (0.0.1)
+    salesforce_desafio (0.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -169,7 +169,7 @@ DEPENDENCIES
   rails (= 4.1)
   rails_12factor
   restforce
-  salesforce_desafio (= 0.0.1)!
+  salesforce_desafio (= 0.0.2)!
   sass-rails (~> 4.0.2)
   sdoc
   turbolinks

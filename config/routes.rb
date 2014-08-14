@@ -6,10 +6,10 @@ Quickrep::Application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  resources :pessoas do
+  resources :pessoas# do
     # get 'integrate_salesforce', on: :member
     #resources :users
-  end
+  #end
   # post 'pessoas/syncronize_salesforce'
   
   # Example of regular route:
