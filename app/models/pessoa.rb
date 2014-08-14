@@ -1,7 +1,14 @@
 class Pessoa < ActiveRecord::Base
   belongs_to :user
   
-  validates_presence_of :user_id
+  
+  
+  validates :name, presence: true, length: { in: 1..80 }
+  validates :last_name, presence: true, length: { in: 1..80 }
+  validate :eh_email
+  validates :company, presence: true
+  
+  validates :user_id, presence: true
   validates_associated :user
   
   def self.new_from_lead(lead, user)
@@ -17,11 +24,8 @@ class Pessoa < ActiveRecord::Base
       pessoa.user_id = user.id
     end
   end
-  
-  validate :eh_email
-
-  private
-    def eh_email
-      errors.add(:email, " is not an valid email") unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-    end
+ 
+  def eh_email
+    errors.add(:email, " is not an valid email") unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  end
 end
