@@ -12,13 +12,6 @@
       </ul>
     </div>
   <% end %>
-  
-  <% if @pessoa.user %>
-	<%= f.hidden_field 'user_id' %>
-  <% else %>
-    <p><%= f.label :user_id %><br />
-    <%= f.collection_select(:user_id, @users, :id, :name, :prompt => true) %></p>
-  <% end %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -48,10 +41,6 @@
     <%= f.label :website %><br>
     <%= f.text_field :website %>
   </div>
-  <div class="field">
-    <%= f.check_box :integrate %>
-    <%= f.label "Integrate to Salesforce" %>
-  </div> 
   <div class="actions">
     <%= f.submit %>
   </div>

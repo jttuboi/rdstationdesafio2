@@ -1,15 +1,8 @@
 <h1>Listing pessoas</h1>
-<div>
-<%#= form_tag :action => 'syncronize_salesforce' do 
-%>
-  <%#= submit_tag 'Syncronize with Salesforces' 
-  %>
-<%# end if current_user 
-%>
-</div>
 <table>
   <thead>
     <tr>
+      <th>Id Salesforce</th>
       <th>Name</th>
       <th>Last name</th>
       <th>Email</th>
@@ -37,7 +30,6 @@
         <td><%= link_to 'Show', pessoa %></td>
         <td><%= link_to 'Edit', edit_pessoa_path(pessoa) %></td>
         <td><%= link_to 'Destroy', pessoa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to pessoa.integrate? ? 'Disintegrate' : 'Integrate', integrate_salesforce_pessoa_path(pessoa) if current_user %></td>
       </tr>
     <% end %>
   </tbody>

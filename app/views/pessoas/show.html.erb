@@ -35,10 +35,5 @@
   <%= @pessoa.website %>
 </p>
 
-<p>
-  <strong>Integrate to Salesforce?:</strong>
-  <%= @pessoa.integrate? ? "Yes" : "No" %>
-</p>
-
 <%= link_to 'Edit', edit_pessoa_path(@pessoa) %> |
 <%= link_to 'Back', pessoas_path %>

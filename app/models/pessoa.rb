@@ -13,7 +13,6 @@ class Pessoa < ActiveRecord::Base
       pessoa.job_title = lead.Title
       pessoa.phone = lead.Phone
       pessoa.website = lead.Website
-      pessoa.integrate = true
       pessoa.salesforce_id = lead.Id
       pessoa.user_id = user.id
     end
