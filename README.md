@@ -1,10 +1,11 @@
 Resume
 -------
 This project is a Ruby on Rails site to test how to connect with Salesforce.com and edit ours data.
-For this, was used the gem RestForce that support transfer data between their. A gem [SalesForce Desafio] [salesforce_desafio] was build for manager the data needs on this site.
+For this, it was used the gem RestForce that support transfer data between their. A gem [SalesForce Desafio] [salesforce_desafio] was build for manager the data needs on this site.
 For authenticate, was used oauth2.0. The config data was transferred to the gem to get the data in salesforce.
-This site has a link to sign in to use authentication salesforce. After logging appears a link with a representation of CRUD Pessoa whose data is synchronized with the salesforce Lead.
 
+This site has a link to sign in to use authentication salesforce. After logging appears a link with a representation of CRUD Pessoa whose data is synchronized with the salesforce Lead.
+The operators CRUD, only Create Pessoa will be sincronyze with salesforce, in other words if you create a person in this site, the person is create in Lead of the salesforce site. **Other operators CRUD are not implemented for this test. If you delete a Pessoa, not remove person in salesforce site.**
 
 
 It was forked this github [rails-salesforce-oauth-template] [bfagundez]
